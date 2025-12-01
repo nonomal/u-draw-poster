@@ -10,7 +10,7 @@ dp.draw(async (ctx) => {
 
 `ctx.drawImage(url, x, y, w, h)`
 
-`drawPoster`绘制图片与原生绘制不相同，`ctx.drawImage`内部已经内置了`downloadFile`，只需要传入本地/网络地址即可。支持`2d`与`非2d`绘制，绘制方式一致。需要await等待绘制。
+`dp`绘制图片与原生绘制不相同，`ctx.drawImage`内部已经内置了`downloadFile`，只需要传入本地/网络地址即可。支持`2d`与`非2d`绘制，绘制方式一致。需要await等待绘制。
 
 如果有图片自适应尺寸裁剪的需求，建议使用`ctx.drawImageFit`。
 
@@ -47,7 +47,7 @@ dp.draw(async (ctx) => {
 
 ## 裁剪图片(ctx.drawImageFit)
 
-`ctx.drawRoundImage(url, DrawImageFitOpts)`
+`ctx.drawImageFit(url, DrawImageFitOpts)`
 
 ```js
 dp.draw(async (ctx) => {
@@ -154,24 +154,19 @@ dp.draw(async (ctx) => {
 // 注意：如果使用HBuilder引入, 需要引入 '@/js_sdk/u-draw'
 import { useDraw } from 'u-draw'
 import drawQrCode, { errorCorrectLevel } from 'u-draw/plugins/drawQrCode'
-
-export default {
-  async onReady() {
-    const dp = useDraw('canvas', {
-      // 单独引入二维码插件
-      plugins: [drawQrCode()]
-    })
-    dp.draw((ctx) => {
-      ctx.drawQrCode({
-        x: (dp.canvas.width / 2) - 50,
-        y: (dp.canvas.height / 2) - 50,
-        text: 'http://www.baidu.com',
-        size: 100,
-        // errorCorrectLevel: errorCorrectLevel.L
-      })
-    })
-  }
-}
+const dp = useDraw('canvas', {
+  // 单独引入二维码插件
+  plugins: [drawQrCode()]
+})
+dp.draw((ctx) => {
+  ctx.drawQrCode({
+    x: (dp.canvas.width / 2) - 50,
+    y: (dp.canvas.height / 2) - 50,
+    text: 'http://www.baidu.com',
+    size: 100,
+    // errorCorrectLevel: errorCorrectLevel.L
+  })
+})
 ```
 
 |       参数        |  类型  | 必填 |                             说明                             |

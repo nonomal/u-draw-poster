@@ -19,6 +19,16 @@
 <!-- #endif -->
 ```
 
+
+## 组件中使用没有效果
+
+在 uniapp 组件中使用绘画时，需要 componentThis 参数，传入组件实例。
+
+```js
+const componentThis = getCurrentInstance()
+const dp = useDraw('canvas', { componentThis })
+```
+
 ## 绘制多个图片加载慢
 
 如果觉得多个图片绘制`await`加载慢，可以使用`Promise.all`将一部分不需要处理图层覆盖的图片进行同步绘制。

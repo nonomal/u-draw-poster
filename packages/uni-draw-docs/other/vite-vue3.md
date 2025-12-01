@@ -7,17 +7,15 @@
 <script setup lang="ts">
 import { onReady } from '@dcloudio/uni-app'
 import { useDraw } from 'u-draw'
-
-onReady(async () => {
-  const dp = useDraw('canvas', {
-    debug: true,
-  })
-  dp.draw(async (ctx) => {
-    ctx.fillStyle = 'red'
-    ctx.fillRect(0, 0, 100, 100)
-  })
-  dp.render()
+const dp = useDraw('canvas', {
+  debug: true,
 })
+
+dp.draw(async (ctx) => {
+  ctx.fillStyle = 'red'
+  ctx.fillRect(0, 0, 100, 100)
+})
+dp.render()
 </script>
 
 <template>
@@ -33,21 +31,18 @@ onReady(async () => {
 import { onReady } from '@dcloudio/uni-app'
 import { useDraw } from 'u-draw'
 
+const dp = useDraw('canvas', {
+  debug: true,
+})
+
 const dPoster = ref()
 
-function withDrawPoster() {
-  dPoster.value = useDraw('canvas', {
-    debug: true,
-  })
-}
-
 async function onDrawPoster() {
-  await withDrawPoster()
-  dPoster.value.draw(async (ctx) => {
+  dp.draw(async (ctx) => {
     ctx.fillStyle = 'red'
     ctx.fillRect(0, 0, 100, 100)
   })
-  await dPoster.value.render()
+  await dp.render()
 }
 </script>
 

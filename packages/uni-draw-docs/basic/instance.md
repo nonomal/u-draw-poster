@@ -8,11 +8,11 @@
 // 仅传入选择器
 useDraw('canvas')
 // 传入选择器 + 配置
-useDraw('canvas', {/* DrawPosterBuildOpts */})
+useDraw('canvas', {/* DrawOptions */})
 // 仅传入配置 (这时 selector 为必填项)
 useDraw({
   selector: 'canvas',
-  /* DrawPosterBuildOpts */
+  /* DrawOptions */
 })
 ```
 

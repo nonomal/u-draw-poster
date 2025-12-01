@@ -40,7 +40,7 @@ const nav: DefaultTheme.NavItem[] = [
   },
   {
     text: 'Github',
-    link: 'https://github.com/TuiMao233/u-draw',
+    link: 'https://github.com/hairyf/u-draw',
   },
   {
     text: 'Hairy\'s Blog',
